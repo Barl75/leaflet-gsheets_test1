@@ -138,10 +138,28 @@ function addPoints(data) {
   }
   pointGroupLayer = L.layerGroup().addTo(map);
 
+  // Choose marker type. Options are:
+  // (these are case-sensitive, defaults to marker!)
+  // marker: standard point with an icon
+  // circleMarker: a circle with a radius set in pixels
+  // circle: a circle with a radius set in meters
+  var markerType = "marker";
+
+  // Marker radius
+  // Wil be in pixels for circleMarker, metres for circle
+  // Ignore for point
+  var markerRadius = 100;
+
   for (var row = 0; row < data.length; row++) {
-    var marker = L.marker([data[row].lat, data[row].long]).addTo(
-      pointGroupLayer
-    );
+    var marker;
+    if (markerType == "circleMarker") {
+      marker = L.circleMarker([data[row].lat, data[row].lon], {radius: markerRadius});
+    } else if (markerType == "circle") {
+      marker = L.circle([data[row].lat, data[row].lon], {radius: markerRadius});
+    } else {
+      marker = L.marker([data[row].lat, data[row].lon]);
+    }
+    marker.addTo(pointGroupLayer);
 
     // UNCOMMENT THIS LINE TO USE POPUPS
     //marker.bindPopup('<h2>' + data[row].location + '</h2>There's a ' + data[row].level + ' ' + data[row].category + ' here');
@@ -172,7 +190,9 @@ function addPoints(data) {
       prefix: "glyphicon",
       extraClasses: "fa-rotate-0"
     });
-    marker.setIcon(icon);
+    if (!markerType.includes("circle")) {
+      marker.setIcon(icon);
+    }
   }
 }
 
@@ -180,11 +200,11 @@ function addPoints(data) {
 // Used for the points layer
 function getColor(type) {
   switch (type) {
-    case "Coffee Shop":
-      return "green";
-    case "Restaurant":
-      return "blue";
-    default:
-      return "green";
+  case "Coffee Shop":
+    return "green";
+  case "Restaurant":
+    return "blue";
+  default:
+    return "green";
   }
 }
