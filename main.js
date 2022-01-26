@@ -8,7 +8,7 @@
 // PASTE YOUR URLs HERE
 // these URLs come from Google Sheets 'shareable link' form
 let pointsURL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSFQw9sVY16eQmN5TIjOH7CUaxeZnl_v6LcdE2goig1pSe9I3hipeOn1sOwmC4fS0AURefRWwcKExct/pub?output=csv";
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRRqlP8nkCcFZYrIh6BWRdUDlCqC0Hka7rcLb0L8BQEbGhqZcoytD5TqZhLwRxCaodoyi0KJ6v2fbe6/pub?output=csv";
 
 window.addEventListener("DOMContentLoaded", init);
 
