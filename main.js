@@ -46,7 +46,7 @@ function init() {
     id: panelID,
     tab: "<i class='fa fa-bars active'></i>",
     pane: "<p id='sidebar-content'></p>",
-    title: "<h2 id='sidebar-title'>Nothing selected</h2>",
+    title: "<h2 id='sidebar-title'>Seleziona un marker</h2>",
   };
   sidebar.addPanel(panelContent);
 
@@ -56,11 +56,6 @@ function init() {
 
   // Use PapaParse to load data from Google Sheets
   // And call the respective functions to add those to the map.
-  Papa.parse(geomURL, {
-    download: true,
-    header: true,
-    complete: addGeoms,
-  });
   Papa.parse(pointsURL, {
     download: true,
     header: true,
