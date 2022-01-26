@@ -38,7 +38,7 @@ function init() {
     .sidebar({
       container: "sidebar",
       closeButton: true,
-      position: "right",
+      position: "left",
     })
     .addTo(map);
 
